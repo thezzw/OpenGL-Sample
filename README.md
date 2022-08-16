@@ -5,13 +5,13 @@
 ## __Contents__
 * __OpenGLDemo__ A cmake project for learning opengl.
 
-## __Used Libraries__
-* __OpenGL__ Installed by default on Windows and Ubuntu.
+## __Third Party Libraries__
 * __GLAD__
 * __GLFW__
 * __GLM__
 * __STB_IMAGE__
 * __ASSIMP__
+> All third party libraries are added as __git submodule__ into this project.
 
 ## __Installation Instructions__
 ```
@@ -20,8 +20,10 @@ mkdir build
 cd build
 cmake ..
 ```
-* OpenGLDemo
+* __OpenGLDemo__
 
-    Open `build/OpenGLDemo.sln` with _Visual Studio_.
-
-    ![](img/001.gif)
+    1. Open `build/OpenGLDemo.sln` with _Visual Studio_.
+    2. Right click OpenGLDemo and select as start project.
+    ![](img/vs_config_0.png)
+    3. Click run button.
+    ![](img/vs_effect_0.gif)

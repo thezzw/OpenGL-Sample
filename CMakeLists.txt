@@ -1,3 +1,4 @@
+# 设定CMAKE最低版本
 cmake_minimum_required(VERSION 3.13)
 
 # 定义项目名称、描述和语言
@@ -38,25 +39,38 @@ include_directories(
 )
 
 # 收集项目文件
-file(GLOB VENDORS_SOURCES lib/glad/src/glad.c)
+file(
+    GLOB VENDORS_SOURCES 
+    lib/glad/src/glad.c
+)
+file(
+    GLOB PROJECT_HEADERS
+    include/*.hpp
+    include/*.h
+)
+file(
+    GLOB PROJECT_SOURCES
+    src/*.cpp
+)
+file(
+    GLOB PROJECT_SHADERS
+    res/*.f
+    res/*.v
+)
 
-file(GLOB PROJECT_HEADERS include/*.hpp
-                          include/*.h)
-
-file(GLOB PROJECT_SOURCES src/*.cpp)
-
-file(GLOB PROJECT_SHADERS res/*.f
-                          res/*.v)
-
+# 添加文件分组
 source_group("headers" FILES ${PROJECT_HEADERS})
 source_group("shaders" FILES ${PROJECT_SHADERS})
 source_group("sources" FILES ${PROJECT_SOURCES})
 source_group("vendors" FILES ${VENDORS_SOURCES})
 
+# 链接可执行文件
 add_executable(${PROJECT_NAME} ${PROJECT_SOURCES} ${PROJECT_HEADERS}
                                ${PROJECT_SHADERS} ${VENDORS_SOURCES})
 
+# 链接库
 target_link_libraries(${PROJECT_NAME} assimp glfw ${GLAD_LIBRARIES})
 
+# 设置运行时项目输出目录位置
 set_target_properties(${PROJECT_NAME} PROPERTIES
                       RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${PROJECT_NAME})
