@@ -26,7 +26,7 @@ cmake ..
     2. Right click OpenGLDemo and select as start project.
     ![](img/vs_config_0.png)
     3. Click run button.
-    ![](img/vs_effect_0.gif)
+    ![](img/vs_effect_material.gif)
     * Tips: This project is using _Visual Studio 2022_ default charset _GB2312_, so if you open it with other IDE you may see some unreadable code. Just change your charset to _GB2312_ and you'll see those chinese annotations.
 
 ## __Useful Link__
