@@ -27,3 +27,7 @@ cmake ..
     ![](img/vs_config_0.png)
     3. Click run button.
     ![](img/vs_effect_0.gif)
+    * Tips: This project is using _Visual Studio 2022_ default charset _GB2312_, so if you open it with other IDE you may see some unreadable code. Just change your charset to _GB2312_ and you'll see those chinese annotations.
+
+## __Useful Link__
+* [__OpenGL/VRML Materials__](http://devernay.free.fr/cours/opengl/materials.html)
