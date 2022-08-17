@@ -157,8 +157,10 @@ int main()
     glEnableVertexAttribArray(0);
 
     unsigned int diffuseMap = loadTexture("../img/container2.png");
+    unsigned int specularMap = loadTexture("../img/container2_specular.png");
 
     lightingShader.setInt("material.diffuse", 0);
+    lightingShader.setInt("material.specular", 1);
 
     // 渲染循环
     while (!glfwWindowShouldClose(window))
@@ -183,11 +185,13 @@ int main()
         lightingShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
         lightingShader.setVec3("light.position", lightPos.x, lightPos.y, lightPos.z);
         // 设置材质
-        lightingShader.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
         lightingShader.setFloat("material.shininess", 32.0f);
-        // 设置贴图
+        // 设置漫反射贴图
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, diffuseMap);
+        // 设置镜面光贴图
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, specularMap);
         // 设置裁剪空间->屏幕空间转换矩阵
         glm::mat4 projection = glm::perspective(glm::radians(camera.zoom()), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
         lightingShader.setMat4("projection", projection);
