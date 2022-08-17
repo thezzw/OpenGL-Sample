@@ -10,7 +10,7 @@
 * __GLFW__
 * __GLM__
 * __STB_IMAGE__
-* __ASSIMP__
+* __ASSIMP__ Open Asset Import Library
 > All third party libraries are added as __git submodule__ into this project.
 
 ## __Installation Instructions__
@@ -32,3 +32,6 @@ cmake ..
 ## __Useful Link__
 * [__OpenGL/VRML Materials__](http://devernay.free.fr/cours/opengl/materials.html)
 * [__Range Constant Linear Quadratic__](http://www.ogre3d.org/tikiwiki/tiki-index.php?page=-Point+Light+Attenuation)
+* [__Wavefront .obj file__](http://en.wikipedia.org/wiki/Wavefront_.obj_file)
+* [__COLLADA__](http://en.wikipedia.org/wiki/COLLADA) Based on xml.
+* [__Assimp Doc__](http://assimp.sourceforge.net/lib_html/postprocess_8h.html)
