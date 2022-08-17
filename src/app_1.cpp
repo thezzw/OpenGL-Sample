@@ -128,6 +128,26 @@ int main()
         -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 0.0f,
         -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f
     };
+    // 多个方块的位置
+    glm::vec3 cubePositions[] = {
+        glm::vec3(0.0f,  0.0f,  0.0f),
+        glm::vec3(2.0f,  5.0f, -15.0f),
+        glm::vec3(-1.5f, -2.2f, -2.5f),
+        glm::vec3(-3.8f, -2.0f, -12.3f),
+        glm::vec3(2.4f, -0.4f, -3.5f),
+        glm::vec3(-1.7f,  3.0f, -7.5f),
+        glm::vec3(1.3f, -2.0f, -2.5f),
+        glm::vec3(1.5f,  2.0f, -2.5f),
+        glm::vec3(1.5f,  0.2f, -1.5f),
+        glm::vec3(-1.3f,  1.0f, -1.5f)
+    };
+    // 点光源位置
+    glm::vec3 pointLightPositions[] = {
+        glm::vec3(0.7f,  0.2f,  2.0f),
+        glm::vec3(2.3f, -3.3f, -4.0f),
+        glm::vec3(-4.0f,  2.0f, -12.0f),
+        glm::vec3(0.0f,  0.0f, -3.0f)
+    };
 
     // 配置缓冲内存 VBO
     unsigned int VBO;
@@ -174,16 +194,50 @@ int main()
         processInput(window);
 
         // 渲染
-        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+        glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         // 设置环境立方体
         lightingShader.use();
         lightingShader.setVec3("viewPos", camera.position().x, camera.position().y, camera.position().z);
-        // 设置灯光
-        lightingShader.setVec3("light.diffuse", 1.0f, 1.0f, 1.0f);
-        lightingShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
-        lightingShader.setVec3("light.position", lightPos.x, lightPos.y, lightPos.z);
+        // 设置直射光源
+        lightingShader.setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
+        lightingShader.setVec3("dirLight.ambient", 0.05f, 0.05f, 0.05f);
+        lightingShader.setVec3("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
+        lightingShader.setVec3("dirLight.specular", 0.5f, 0.5f, 0.5f);
+        // 设置点光源
+        // point light 1
+        lightingShader.setVec3("pointLights[0].position", pointLightPositions[0]);
+        lightingShader.setVec3("pointLights[0].ambient", 0.05f, 0.05f, 0.05f);
+        lightingShader.setVec3("pointLights[0].diffuse", 0.8f, 0.8f, 0.8f);
+        lightingShader.setVec3("pointLights[0].specular", 1.0f, 1.0f, 1.0f);
+        lightingShader.setFloat("pointLights[0].constant", 1.0f);
+        lightingShader.setFloat("pointLights[0].linear", 0.09f);
+        lightingShader.setFloat("pointLights[0].quadratic", 0.032f);
+        // point light 2
+        lightingShader.setVec3("pointLights[1].position", pointLightPositions[1]);
+        lightingShader.setVec3("pointLights[1].ambient", 0.05f, 0.05f, 0.05f);
+        lightingShader.setVec3("pointLights[1].diffuse", 0.8f, 0.8f, 0.8f);
+        lightingShader.setVec3("pointLights[1].specular", 1.0f, 1.0f, 1.0f);
+        lightingShader.setFloat("pointLights[1].constant", 1.0f);
+        lightingShader.setFloat("pointLights[1].linear", 0.09f);
+        lightingShader.setFloat("pointLights[1].quadratic", 0.032f);
+        // point light 3
+        lightingShader.setVec3("pointLights[2].position", pointLightPositions[2]);
+        lightingShader.setVec3("pointLights[2].ambient", 0.05f, 0.05f, 0.05f);
+        lightingShader.setVec3("pointLights[2].diffuse", 0.8f, 0.8f, 0.8f);
+        lightingShader.setVec3("pointLights[2].specular", 1.0f, 1.0f, 1.0f);
+        lightingShader.setFloat("pointLights[2].constant", 1.0f);
+        lightingShader.setFloat("pointLights[2].linear", 0.09f);
+        lightingShader.setFloat("pointLights[2].quadratic", 0.032f);
+        // point light 4
+        lightingShader.setVec3("pointLights[3].position", pointLightPositions[3]);
+        lightingShader.setVec3("pointLights[3].ambient", 0.05f, 0.05f, 0.05f);
+        lightingShader.setVec3("pointLights[3].diffuse", 0.8f, 0.8f, 0.8f);
+        lightingShader.setVec3("pointLights[3].specular", 1.0f, 1.0f, 1.0f);
+        lightingShader.setFloat("pointLights[3].constant", 1.0f);
+        lightingShader.setFloat("pointLights[3].linear", 0.09f);
+        lightingShader.setFloat("pointLights[3].quadratic", 0.032f);
         // 设置材质
         lightingShader.setFloat("material.shininess", 32.0f);
         // 设置漫反射贴图
@@ -203,6 +257,14 @@ int main()
         lightingShader.setMat4("model", model);
         // 渲染环境立方体
         glBindVertexArray(cubeVAO);
+        for (unsigned int i = 0; i < 10; i++)
+        {
+            glm::mat4 model = glm::mat4(1.0f);
+            model = glm::translate(model, cubePositions[i]);
+            lightingShader.setMat4("model", model);
+
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
         // 设置光源立方体
@@ -216,7 +278,14 @@ int main()
         lightCubeShader.setMat4("model", model);
         // 渲染光源立方体
         glBindVertexArray(lightCubeVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+        for (unsigned int i = 0; i < 4; i++)
+        {
+            model = glm::mat4(1.0f);
+            model = glm::translate(model, pointLightPositions[i]);
+            model = glm::scale(model, glm::vec3(0.2f)); // Make it a smaller cube
+            lightCubeShader.setMat4("model", model);
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
 
         // 交换缓存，处理IO事件
         glfwSwapBuffers(window);

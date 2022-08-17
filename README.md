@@ -31,3 +31,4 @@ cmake ..
 
 ## __Useful Link__
 * [__OpenGL/VRML Materials__](http://devernay.free.fr/cours/opengl/materials.html)
+* [__Range Constant Linear Quadratic__](http://www.ogre3d.org/tikiwiki/tiki-index.php?page=-Point+Light+Attenuation)
