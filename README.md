@@ -24,10 +24,15 @@ cmake ..
 
     1. Open `build/OpenGLDemo.sln` with _Visual Studio_.
     2. Right click OpenGLDemo and select as start project.
-    ![](img/vs_config_0.png)
+    ![](assets/readme/vs_config_0.png)
     3. Click run button.
-    ![](img/vs_effect_material.gif)
-    * Tips: This project is using _Visual Studio 2022_ default charset _GB2312_, so if you open it with other IDE you may see some unreadable code. Just change your charset to _GB2312_ and you'll see those chinese annotations.
+    ![](assets/readme/vs_effect_material.gif)
+    * __Current effect__:
+    1. [Boxes with various lights.](assets/readme/boxes_with_lights.mp4)
+    ![](assets/readme/boxes_with_lights.png)
+    2. [Load a model from .obj.](assets/readme/model_load.mp4)
+    ![](assets/readme/model_load.png)
+    * __Tips__: This project is using _Visual Studio 2022_ default charset _GB2312_, so if you open it with other IDE you may see some unreadable code. Just change your charset to _GB2312_ and you'll see those chinese annotations.
 
 ## __Useful Link__
 * [__OpenGL/VRML Materials__](http://devernay.free.fr/cours/opengl/materials.html)

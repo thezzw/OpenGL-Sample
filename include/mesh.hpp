@@ -39,7 +39,7 @@ public:
 	{
 		this->vertices = vertices;
 		this->indices = indices;
-		this->vertices = vertices;
+		this->textures = textures;
 
 		setupMesh();
 	}
@@ -53,7 +53,7 @@ public:
 
 		for (unsigned int i = 0; i < textures.size(); i++)
 		{
-			glActiveTexture(GL_TEXTURE + i);
+			glActiveTexture(GL_TEXTURE0 + i);
 			std::string number;
 			std::string name = textures[i].type;
 			if (name == "texture_diffuse")
@@ -69,7 +69,6 @@ public:
 			glBindTexture(GL_TEXTURE_2D, textures[i].id);
 		}
 
-		// ��������
 		glBindVertexArray(VAO);
 		glDrawElements(GL_TRIANGLES, static_cast<unsigned int>(indices.size()), GL_UNSIGNED_INT, 0);
 		glBindVertexArray(0);

@@ -46,7 +46,6 @@ file(
 file(
     GLOB PROJECT_HEADERS
     include/*.hpp
-    include/*.h
 )
 file(
     GLOB PROJECT_SOURCES
@@ -54,8 +53,8 @@ file(
 )
 file(
     GLOB PROJECT_SHADERS
-    res/*.frag
-    res/*.vert
+    res/*.fs
+    res/*.vs
 )
 
 # 添加文件分组

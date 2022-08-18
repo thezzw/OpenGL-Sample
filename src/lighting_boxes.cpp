@@ -1,54 +1,54 @@
 // #include <glad/glad.h>
 // #include <glfw/glfw3.h>
 // 
-// // ÊýÑ§¿â
+// // ï¿½ï¿½Ñ§ï¿½ï¿½
 // #include <glm.hpp>
 // #include <gtc/matrix_transform.hpp>
 // #include <gtc/type_ptr.hpp>
 // 
-// // Í¼Æ¬¼ÓÔØ
+// // Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
 // #include <stb_image.h>
 // 
-// // ·â×°µÄäÖÈ¾Æ÷ÀàºÍÏà»úÀà
+// // ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½È¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 // #include "shader.hpp"
 // #include "camera.hpp"
 // 
 // #include <iostream>
 // 
-// // ¶¨Òåº¯ÊýÔ­ÐÍ
+// // ï¿½ï¿½ï¿½åº¯ï¿½ï¿½Ô­ï¿½ï¿½
 // void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 // void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 // void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 // void processInput(GLFWwindow* window);
 // unsigned int loadTexture(const char* path);
 // 
-// // ÉèÖÃ´°¿Ú¿í¸ß µ¥Î»£ºÏñËØ
+// // ï¿½ï¿½ï¿½Ã´ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 // const unsigned int SCR_WIDTH = 1200;
 // const unsigned int SCR_HEIGHT = 900;
 // 
-// // ¶¨ÒåÏà»úÀà
+// // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 // Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 // float lastX = SCR_WIDTH / 2.0f;
 // float lastY = SCR_HEIGHT / 2.0f;
 // bool firstMouse = true;
 // 
-// // ¶¨ÒåÊ±¼ä
+// // ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
 // float deltaTime = 0.0f;
 // float lastFrame = 0.0f;
 // 
-// // ¶¨Òå¹âÕÕÎ»ÖÃ
+// // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
 // glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
 // 
-// // Ö÷º¯Êý
+// // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 // int main()
 // {
-//     // ³õÊ¼»¯GLFW´°¿Ú
+//     // ï¿½ï¿½Ê¼ï¿½ï¿½GLFWï¿½ï¿½ï¿½ï¿½
 //     glfwInit();
 //     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 //     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 //     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 // 
-//     // ´´½¨GLFW´°¿Ú
+//     // ï¿½ï¿½ï¿½ï¿½GLFWï¿½ï¿½ï¿½ï¿½
 //     GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
 //     if (window == NULL)
 //     {
@@ -57,33 +57,33 @@
 //         return -1;
 //     }
 // 
-//     // ÉèÖÃ´°¿ÚÉÏÏÂÎÄ
+//     // ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //     glfwMakeContextCurrent(window);
 // 
-//     // °ó¶¨»Øµ÷º¯Êý
+//     // ï¿½ó¶¨»Øµï¿½ï¿½ï¿½ï¿½ï¿½
 //     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 //     glfwSetCursorPosCallback(window, mouse_callback);
 //     glfwSetScrollCallback(window, scroll_callback);
 // 
-//     // Òþ²ØÊó±êÖ¸Õë
+//     // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
 //     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 // 
-//     // Í¨¹ýGLAD¼ÓÔØËùÓÐOPENGLº¯ÊýÖ¸Õë
+//     // Í¨ï¿½ï¿½GLADï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½OPENGLï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
 //     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 //     {
 //         std::cout << "Failed to initialize GLAD" << std::endl;
 //         return -1;
 //     }
 // 
-//     // ÅäÖÃÈ«¾ÖOPENGL×´Ì¬£¬´ò¿ªÉî¶È²âÊÔ
+//     // ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½OPENGL×´Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È²ï¿½ï¿½ï¿½
 //     glEnable(GL_DEPTH_TEST);
 // 
-//     // ¼ÓÔØ±àÒëGLSL
+//     // ï¿½ï¿½ï¿½Ø±ï¿½ï¿½ï¿½GLSL
 //     Shader lightingShader("../res/obj.vert", "../res/obj.frag");
 //     Shader lightCubeShader("../res/light.vert", "../res/light.frag");
 // 
-//     // ÉèÖÃ¶¥µãÊý¾Ý£¬ÅäÖÃ¶¥µãÊôÐÔ
-//     // ±ß³¤Îª1µÄÕý·½Ìå
+//     // ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//     // ï¿½ß³ï¿½Îª1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //     float vertices[] = {
 //         // positions          // normals           // texture coords
 //         -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
@@ -128,7 +128,7 @@
 //         -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 0.0f,
 //         -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f
 //     };
-//     // ¶à¸ö·½¿éµÄÎ»ÖÃ
+//     // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
 //     glm::vec3 cubePositions[] = {
 //         glm::vec3(0.0f,  0.0f,  0.0f),
 //         glm::vec3(2.0f,  5.0f, -15.0f),
@@ -141,7 +141,7 @@
 //         glm::vec3(1.5f,  0.2f, -1.5f),
 //         glm::vec3(-1.3f,  1.0f, -1.5f)
 //     };
-//     // µã¹âÔ´Î»ÖÃ
+//     // ï¿½ï¿½ï¿½Ô´Î»ï¿½ï¿½
 //     glm::vec3 pointLightPositions[] = {
 //         glm::vec3(0.7f,  0.2f,  2.0f),
 //         glm::vec3(2.3f, -3.3f, -4.0f),
@@ -149,11 +149,11 @@
 //         glm::vec3(0.0f,  0.0f, -3.0f)
 //     };
 // 
-//     // ÅäÖÃ»º³åÄÚ´æ VBO
+//     // ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ VBO
 //     unsigned int VBO;
 //     glGenBuffers(1, &VBO);
 // 
-//     // ÅäÖÃ»·¾³Á¢·½Ìå cudeVAO
+//     // ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ cudeVAO
 //     unsigned int cubeVAO;
 //     glGenVertexArrays(1, &cubeVAO);
 //     glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -167,11 +167,11 @@
 //     glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
 //     glEnableVertexAttribArray(2);
 // 
-//     // ÅäÖÃ¹âÔ´Á¢·½Ìå lightCubeVAO
+//     // ï¿½ï¿½ï¿½Ã¹ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ lightCubeVAO
 //     unsigned int lightCubeVAO;
 //     glGenVertexArrays(1, &lightCubeVAO);
 //     glBindVertexArray(lightCubeVAO);
-//     glBindBuffer(GL_ARRAY_BUFFER, VBO);     // VBOÀïÒÑÓÐlightCubeVAOÐèÒªµÄËùÓÐÊý¾Ý£¬ËùÒÔ²»ÓÃÔÙÓÃglBufferDataÔÙÉèÖÃÒ»±é¡£
+//     glBindBuffer(GL_ARRAY_BUFFER, VBO);     // VBOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½lightCubeVAOï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½glBufferDataï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½é¡£
 // 
 //     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 //     glEnableVertexAttribArray(0);
@@ -182,30 +182,30 @@
 //     lightingShader.setInt("material.diffuse", 0);
 //     lightingShader.setInt("material.specular", 1);
 // 
-//     // äÖÈ¾Ñ­»·
+//     // ï¿½ï¿½È¾Ñ­ï¿½ï¿½
 //     while (!glfwWindowShouldClose(window))
 //     {
-//         // Ö¡Ç°Âß¼­
+//         // Ö¡Ç°ï¿½ß¼ï¿½
 //         float currentFrame = static_cast<float>(glfwGetTime());
 //         deltaTime = currentFrame - lastFrame;
 //         lastFrame = currentFrame;
 // 
-//         // ´¦ÀíÊäÈë
+//         // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //         processInput(window);
 // 
-//         // äÖÈ¾
+//         // ï¿½ï¿½È¾
 //         glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
 //         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 // 
-//         // ÉèÖÃ»·¾³Á¢·½Ìå
+//         // ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //         lightingShader.use();
 //         lightingShader.setVec3("viewPos", camera.position().x, camera.position().y, camera.position().z);
-//         // ÉèÖÃÖ±Éä¹âÔ´
+//         // ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½Ô´
 //         lightingShader.setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
 //         lightingShader.setVec3("dirLight.ambient", 0.05f, 0.05f, 0.05f);
 //         lightingShader.setVec3("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
 //         lightingShader.setVec3("dirLight.specular", 0.5f, 0.5f, 0.5f);
-//         // ÉèÖÃµã¹âÔ´
+//         // ï¿½ï¿½ï¿½Ãµï¿½ï¿½Ô´
 //         // point light 1
 //         lightingShader.setVec3("pointLights[0].position", pointLightPositions[0]);
 //         lightingShader.setVec3("pointLights[0].ambient", 0.05f, 0.05f, 0.05f);
@@ -238,24 +238,24 @@
 //         lightingShader.setFloat("pointLights[3].constant", 1.0f);
 //         lightingShader.setFloat("pointLights[3].linear", 0.09f);
 //         lightingShader.setFloat("pointLights[3].quadratic", 0.032f);
-//         // ÉèÖÃ²ÄÖÊ
+//         // ï¿½ï¿½ï¿½Ã²ï¿½ï¿½ï¿½
 //         lightingShader.setFloat("material.shininess", 32.0f);
-//         // ÉèÖÃÂþ·´ÉäÌùÍ¼
+//         // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼
 //         glActiveTexture(GL_TEXTURE0);
 //         glBindTexture(GL_TEXTURE_2D, diffuseMap);
-//         // ÉèÖÃ¾µÃæ¹âÌùÍ¼
+//         // ï¿½ï¿½ï¿½Ã¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼
 //         glActiveTexture(GL_TEXTURE1);
 //         glBindTexture(GL_TEXTURE_2D, specularMap);
-//         // ÉèÖÃ²Ã¼ô¿Õ¼ä->ÆÁÄ»¿Õ¼ä×ª»»¾ØÕó
+//         // ï¿½ï¿½ï¿½Ã²Ã¼ï¿½ï¿½Õ¼ï¿½->ï¿½ï¿½Ä»ï¿½Õ¼ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //         glm::mat4 projection = glm::perspective(glm::radians(camera.zoom()), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
 //         lightingShader.setMat4("projection", projection);
-//         // ÉèÖÃ¹Û²ì¿Õ¼ä->²Ã¼ô¿Õ¼ä×ª»»¾ØÕó
+//         // ï¿½ï¿½ï¿½Ã¹Û²ï¿½Õ¼ï¿½->ï¿½Ã¼ï¿½ï¿½Õ¼ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //         glm::mat4 view = camera.GetViewMatrix();
 //         lightingShader.setMat4("view", view);
-//         // ÉèÖÃÄ£ÐÍ¿Õ¼ä->ÊÀ½ç¿Õ¼ä×ª»»¾ØÕó
+//         // ï¿½ï¿½ï¿½ï¿½Ä£ï¿½Í¿Õ¼ï¿½->ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //         glm::mat4 model = glm::mat4(1.0f);
 //         lightingShader.setMat4("model", model);
-//         // äÖÈ¾»·¾³Á¢·½Ìå
+//         // ï¿½ï¿½È¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //         glBindVertexArray(cubeVAO);
 //         for (unsigned int i = 0; i < 10; i++)
 //         {
@@ -267,16 +267,16 @@
 //         }
 //         glDrawArrays(GL_TRIANGLES, 0, 36);
 // 
-//         // ÉèÖÃ¹âÔ´Á¢·½Ìå
+//         // ï¿½ï¿½ï¿½Ã¹ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //         lightCubeShader.use();
-//         // ÉèÖÃ×ø±ê±ä»»¾ØÕó
+//         // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ä»»ï¿½ï¿½ï¿½ï¿½
 //         lightCubeShader.setMat4("projection", projection);
 //         lightCubeShader.setMat4("view", view);
 //         model = glm::mat4(1.0f);
 //         model = glm::translate(model, lightPos);
 //         model = glm::scale(model, glm::vec3(0.2f)); // a smaller cube
 //         lightCubeShader.setMat4("model", model);
-//         // äÖÈ¾¹âÔ´Á¢·½Ìå
+//         // ï¿½ï¿½È¾ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //         glBindVertexArray(lightCubeVAO);
 //         for (unsigned int i = 0; i < 4; i++)
 //         {
@@ -287,22 +287,22 @@
 //             glDrawArrays(GL_TRIANGLES, 0, 36);
 //         }
 // 
-//         // ½»»»»º´æ£¬´¦ÀíIOÊÂ¼þ
+//         // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ£¬ï¿½ï¿½ï¿½ï¿½IOï¿½Â¼ï¿½
 //         glfwSwapBuffers(window);
 //         glfwPollEvents();
 //     }
 // 
-//     // ÊÍ·Å×ÊÔ´
+//     // ï¿½Í·ï¿½ï¿½ï¿½Ô´
 //     glDeleteVertexArrays(1, &cubeVAO);
 //     glDeleteVertexArrays(1, &lightCubeVAO);
 //     glDeleteBuffers(1, &VBO);
 // 
-//     // ÖÕÖ¹´°¿Ú³ÌÐò£¬ÇåÀí×ÊÔ´
+//     // ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½Ú³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´
 //     glfwTerminate();
 //     return 0;
 // }
 // 
-// // ´¦ÀíËùÓÐÊäÈë
+// // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 // void processInput(GLFWwindow* window)
 // {
 //     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
@@ -318,7 +318,7 @@
 //         camera.ProcessKeyboard(kRight, deltaTime);
 // }
 // 
-// // »Øµ÷£º´¦Àí´°¿Ú´óÐ¡±ä»¯
+// // ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½Ð¡ï¿½ä»¯
 // void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 // {
 //     // make sure the viewport matches the new window dimensions; note that width and 
@@ -327,7 +327,7 @@
 // }
 // 
 // 
-// // »Øµ÷£º´¦ÀíÊó±êÒÆ¶¯
+// // ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½
 // void mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
 // {
 //     float xpos = static_cast<float>(xposIn);
@@ -349,13 +349,13 @@
 //     camera.ProcessMouseMovement(xoffset, yoffset);
 // }
 // 
-// // »Øµ÷£º´¦Àí¹öÂÖ¹ö¶¯
+// // ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½
 // void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 // {
 //     camera.ProcessMouseScroll(static_cast<float>(yoffset));
 // }
 // 
-// // ¼ÓÔØÌùÍ¼
+// // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼
 // unsigned int loadTexture(char const* path)
 // {
 //     unsigned int textureID;
