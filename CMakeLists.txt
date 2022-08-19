@@ -53,8 +53,8 @@ file(
 )
 file(
     GLOB PROJECT_SHADERS
-    res/*.fs
-    res/*.vs
+    assets/shader/*.frag
+    assets/shader/*.vert
 )
 
 # 添加文件分组
