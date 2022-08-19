@@ -32,6 +32,8 @@ cmake ..
     ![](assets/readme/boxes_with_lights.png)
     2. [Load a model from .obj.](assets/readme/model_load.mp4)
     ![](assets/readme/model_load.png)
+    3. [Add animated light effect](assets/readme/animation_light.mp4)
+    ![](assets/readme/animation_light.png)
     * __Tips__: This project is using _Visual Studio 2022_ default charset _GB2312_, so if you open it with other IDE you may see some unreadable code. Just change your charset to _GB2312_ and you'll see those chinese annotations.
 
 ## __Useful Link__
