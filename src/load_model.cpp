@@ -8,6 +8,7 @@
 #include "shader.hpp"
 #include "camera.hpp"
 #include "model.hpp"
+#include "light.hpp"
 
 #include <iostream>
 
@@ -54,12 +55,14 @@ int main()
         return -1;
     }
 
-    stbi_set_flip_vertically_on_load(true);
+    stbi_set_flip_vertically_on_load(false);
 
     glEnable(GL_DEPTH_TEST);
 
     Shader ourShader("../assets/shader/model.vert", "../assets/shader/model.frag");
+    Shader lightShader("../assets/shader/model_s.vert", "../assets/shader/model_s.frag");
     Model ourModel("../assets/model/nanosuit/nanosuit.obj");
+    Light light;
 
     while (!glfwWindowShouldClose(window))
     {
@@ -73,20 +76,23 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         ourShader.use();
+        float time = glfwGetTime();
+        glm::vec3 light_pos = glm::vec3(7.0f * cos(time), 10.0f, 7.0f * sin(time));
+        glm::vec3 light_pos_ops = glm::vec3(-7.0f * cos(time), 10.0f, -7.0f * sin(time));
 
         ourShader.setVec3("viewPos", camera.position());
         ourShader.setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
         ourShader.setVec3("dirLight.ambient", 0.05f, 0.05f, 0.05f);
         ourShader.setVec3("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
         ourShader.setVec3("dirLight.specular", 0.5f, 0.5f, 0.5f);
-        ourShader.setVec3("pointLights[0].position", glm::vec3(5.0f, 0.0f, 0.0f));
+        ourShader.setVec3("pointLights[0].position", light_pos);
         ourShader.setVec3("pointLights[0].ambient", 0.05f, 0.05f, 0.05f);
         ourShader.setVec3("pointLights[0].diffuse", 0.8f, 0.8f, 0.8f);
         ourShader.setVec3("pointLights[0].specular", 1.0f, 1.0f, 1.0f);
         ourShader.setFloat("pointLights[0].constant", 1.0f);
         ourShader.setFloat("pointLights[0].linear", 0.007f);
         ourShader.setFloat("pointLights[0].quadratic", 0.0002f);
-        ourShader.setVec3("pointLights[1].position", glm::vec3(-5.0f, 0.0f, 0.0f));
+        ourShader.setVec3("pointLights[1].position", light_pos_ops);
         ourShader.setVec3("pointLights[1].ambient", 0.05f, 0.05f, 0.05f);
         ourShader.setVec3("pointLights[1].diffuse", 0.8f, 0.8f, 0.8f);
         ourShader.setVec3("pointLights[1].specular", 1.0f, 1.0f, 1.0f);
@@ -105,6 +111,10 @@ int main()
         ourShader.setMat4("model", model);
         
         ourModel.Draw(ourShader);
+
+        lightShader.use();
+        light.drawCube(lightShader, light_pos, glm::vec3(1.0f, 1.0f, 1.0f), projection, view, model);
+        light.drawCube(lightShader, light_pos_ops, glm::vec3(1.0f, 1.0f, 1.0f), projection, view, model);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
