@@ -26,7 +26,7 @@ unsigned int TextureFromFile(const char* path, const string& directory, bool gam
 class Model
 {
 public:
-    vector<Texture> textures_loaded;	// stores all the textures loaded so far, optimization to make sure textures aren't loaded more than once.
+    vector<Texture> textures_loaded;
     vector<Mesh>    meshes;
     string directory;
     bool gammaCorrection;
@@ -155,18 +155,18 @@ private:
                 if (std::strcmp(textures_loaded[j].path.data(), str.C_Str()) == 0)
                 {
                     textures.push_back(textures_loaded[j]);
-                    skip = true; // a texture with the same filepath has already been loaded, continue to next one. (optimization)
+                    skip = true; 
                     break;
                 }
             }
             if (!skip)
-            {   // if texture hasn't been loaded already, load it
+            {   
                 Texture texture;
                 texture.id = TextureFromFile(str.C_Str(), this->directory);
                 texture.type = typeName;
                 texture.path = str.C_Str();
                 textures.push_back(texture);
-                textures_loaded.push_back(texture);  // store it as texture loaded for entire model, to ensure we won't unnecesery load duplicate textures.
+                textures_loaded.push_back(texture); 
             }
         }
         return textures;
