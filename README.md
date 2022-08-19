@@ -1,6 +1,6 @@
 # __OpenGL-Demo__
 ## __Description__
-* This is a repository for OpenGL demo projects I had down.
+* This is a repository for OpenGL demo projects I had done.
 
 ## __Contents__
 * __OpenGLDemo__ A cmake project for learning opengl.
