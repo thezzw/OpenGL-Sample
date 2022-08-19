@@ -11,7 +11,9 @@ enum Directions
 	kForward,
 	kBackward,
 	kLeft,
-	kRight
+	kRight,
+	kUp,
+	kDown
 };
 
 class Camera
@@ -42,6 +44,12 @@ public:
 			break;
 		case kRight:
 			position_ += glm::normalize(glm::cross(front_, up_)) * dlt_dis;
+			break;
+		case kUp:
+			position_ += dlt_dis * up_;
+			break;
+		case kDown:
+			position_ -= dlt_dis * up_;
 			break;
 		default:
 			break;

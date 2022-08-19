@@ -1,54 +1,54 @@
-// #include <glad/glad.h>
+﻿// #include <glad/glad.h>
 // #include <glfw/glfw3.h>
 // 
-// // ��ѧ��
+// // ?????
 // #include <glm.hpp>
 // #include <gtc/matrix_transform.hpp>
 // #include <gtc/type_ptr.hpp>
 // 
-// // ͼƬ����
+// // ??????
 // #include <stb_image.h>
 // 
-// // ��װ����Ⱦ����������
+// // ??????????????????
 // #include "shader.hpp"
 // #include "camera.hpp"
 // 
 // #include <iostream>
 // 
-// // ���庯��ԭ��
+// // ???庯?????
 // void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 // void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 // void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 // void processInput(GLFWwindow* window);
 // unsigned int loadTexture(const char* path);
 // 
-// // ���ô��ڿ��� ��λ������
+// // ?????????? ??λ??????
 // const unsigned int SCR_WIDTH = 1200;
 // const unsigned int SCR_HEIGHT = 900;
 // 
-// // ���������
+// // ?????????
 // Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 // float lastX = SCR_WIDTH / 2.0f;
 // float lastY = SCR_HEIGHT / 2.0f;
 // bool firstMouse = true;
 // 
-// // ����ʱ��
+// // ???????
 // float deltaTime = 0.0f;
 // float lastFrame = 0.0f;
 // 
-// // �������λ��
+// // ???????λ??
 // glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
 // 
-// // ������
+// // ??????
 // int main()
 // {
-//     // ��ʼ��GLFW����
+//     // ?????GLFW????
 //     glfwInit();
 //     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 //     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 //     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 // 
-//     // ����GLFW����
+//     // ????GLFW????
 //     GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
 //     if (window == NULL)
 //     {
@@ -57,33 +57,33 @@
 //         return -1;
 //     }
 // 
-//     // ���ô���������
+//     // ?????????????
 //     glfwMakeContextCurrent(window);
 // 
-//     // �󶨻ص�����
+//     // ?????????
 //     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 //     glfwSetCursorPosCallback(window, mouse_callback);
 //     glfwSetScrollCallback(window, scroll_callback);
 // 
-//     // �������ָ��
+//     // ??????????
 //     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 // 
-//     // ͨ��GLAD��������OPENGL����ָ��
+//     // ???GLAD????????OPENGL???????
 //     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 //     {
 //         std::cout << "Failed to initialize GLAD" << std::endl;
 //         return -1;
 //     }
 // 
-//     // ����ȫ��OPENGL״̬������Ȳ���
+//     // ???????OPENGL????????????
 //     glEnable(GL_DEPTH_TEST);
 // 
-//     // ���ر���GLSL
+//     // ???????GLSL
 //     Shader lightingShader("../res/obj.vert", "../res/obj.frag");
 //     Shader lightCubeShader("../res/light.vert", "../res/light.frag");
 // 
-//     // ���ö������ݣ����ö�������
-//     // �߳�Ϊ1��������
+//     // ???????????????????????
+//     // ????1????????
 //     float vertices[] = {
 //         // positions          // normals           // texture coords
 //         -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
@@ -128,7 +128,7 @@
 //         -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 0.0f,
 //         -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f
 //     };
-//     // ��������λ��
+//     // ????????λ??
 //     glm::vec3 cubePositions[] = {
 //         glm::vec3(0.0f,  0.0f,  0.0f),
 //         glm::vec3(2.0f,  5.0f, -15.0f),
@@ -141,7 +141,7 @@
 //         glm::vec3(1.5f,  0.2f, -1.5f),
 //         glm::vec3(-1.3f,  1.0f, -1.5f)
 //     };
-//     // ���Դλ��
+//     // ????λ??
 //     glm::vec3 pointLightPositions[] = {
 //         glm::vec3(0.7f,  0.2f,  2.0f),
 //         glm::vec3(2.3f, -3.3f, -4.0f),
@@ -149,11 +149,11 @@
 //         glm::vec3(0.0f,  0.0f, -3.0f)
 //     };
 // 
-//     // ���û����ڴ� VBO
+//     // ?????????? VBO
 //     unsigned int VBO;
 //     glGenBuffers(1, &VBO);
 // 
-//     // ���û��������� cudeVAO
+//     // ????????????? cudeVAO
 //     unsigned int cubeVAO;
 //     glGenVertexArrays(1, &cubeVAO);
 //     glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -167,11 +167,11 @@
 //     glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
 //     glEnableVertexAttribArray(2);
 // 
-//     // ���ù�Դ������ lightCubeVAO
+//     // ???ù???????? lightCubeVAO
 //     unsigned int lightCubeVAO;
 //     glGenVertexArrays(1, &lightCubeVAO);
 //     glBindVertexArray(lightCubeVAO);
-//     glBindBuffer(GL_ARRAY_BUFFER, VBO);     // VBO������lightCubeVAO��Ҫ���������ݣ����Բ�������glBufferData������һ�顣
+//     glBindBuffer(GL_ARRAY_BUFFER, VBO);     // VBO??????lightCubeVAO?????????????????????????glBufferData????????顣
 // 
 //     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 //     glEnableVertexAttribArray(0);
@@ -182,30 +182,30 @@
 //     lightingShader.setInt("material.diffuse", 0);
 //     lightingShader.setInt("material.specular", 1);
 // 
-//     // ��Ⱦѭ��
+//     // ??????
 //     while (!glfwWindowShouldClose(window))
 //     {
-//         // ֡ǰ�߼�
+//         // ?????
 //         float currentFrame = static_cast<float>(glfwGetTime());
 //         deltaTime = currentFrame - lastFrame;
 //         lastFrame = currentFrame;
 // 
-//         // ��������
+//         // ????????
 //         processInput(window);
 // 
-//         // ��Ⱦ
+//         // ???
 //         glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
 //         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 // 
-//         // ���û���������
+//         // ?????????????
 //         lightingShader.use();
 //         lightingShader.setVec3("viewPos", camera.position().x, camera.position().y, camera.position().z);
-//         // ����ֱ���Դ
+//         // ?????????
 //         lightingShader.setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
 //         lightingShader.setVec3("dirLight.ambient", 0.05f, 0.05f, 0.05f);
 //         lightingShader.setVec3("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
 //         lightingShader.setVec3("dirLight.specular", 0.5f, 0.5f, 0.5f);
-//         // ���õ��Դ
+//         // ???????
 //         // point light 1
 //         lightingShader.setVec3("pointLights[0].position", pointLightPositions[0]);
 //         lightingShader.setVec3("pointLights[0].ambient", 0.05f, 0.05f, 0.05f);
@@ -238,24 +238,24 @@
 //         lightingShader.setFloat("pointLights[3].constant", 1.0f);
 //         lightingShader.setFloat("pointLights[3].linear", 0.09f);
 //         lightingShader.setFloat("pointLights[3].quadratic", 0.032f);
-//         // ���ò���
+//         // ???ò???
 //         lightingShader.setFloat("material.shininess", 32.0f);
-//         // ������������ͼ
+//         // ?????????????
 //         glActiveTexture(GL_TEXTURE0);
 //         glBindTexture(GL_TEXTURE_2D, diffuseMap);
-//         // ���þ������ͼ
+//         // ???????????
 //         glActiveTexture(GL_TEXTURE1);
 //         glBindTexture(GL_TEXTURE_2D, specularMap);
-//         // ���òü��ռ�->��Ļ�ռ�ת������
+//         // ???òü????->?????????????
 //         glm::mat4 projection = glm::perspective(glm::radians(camera.zoom()), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
 //         lightingShader.setMat4("projection", projection);
-//         // ���ù۲�ռ�->�ü��ռ�ת������
+//         // ???ù????->?ü???????????
 //         glm::mat4 view = camera.GetViewMatrix();
 //         lightingShader.setMat4("view", view);
-//         // ����ģ�Ϳռ�->����ռ�ת������
+//         // ?????????->?????????????
 //         glm::mat4 model = glm::mat4(1.0f);
 //         lightingShader.setMat4("model", model);
-//         // ��Ⱦ����������
+//         // ?????????????
 //         glBindVertexArray(cubeVAO);
 //         for (unsigned int i = 0; i < 10; i++)
 //         {
@@ -267,16 +267,16 @@
 //         }
 //         glDrawArrays(GL_TRIANGLES, 0, 36);
 // 
-//         // ���ù�Դ������
+//         // ???ù????????
 //         lightCubeShader.use();
-//         // ��������任����
+//         // ????????任????
 //         lightCubeShader.setMat4("projection", projection);
 //         lightCubeShader.setMat4("view", view);
 //         model = glm::mat4(1.0f);
 //         model = glm::translate(model, lightPos);
 //         model = glm::scale(model, glm::vec3(0.2f)); // a smaller cube
 //         lightCubeShader.setMat4("model", model);
-//         // ��Ⱦ��Դ������
+//         // ????????????
 //         glBindVertexArray(lightCubeVAO);
 //         for (unsigned int i = 0; i < 4; i++)
 //         {
@@ -287,22 +287,22 @@
 //             glDrawArrays(GL_TRIANGLES, 0, 36);
 //         }
 // 
-//         // �������棬����IO�¼�
+//         // ???????棬????IO???
 //         glfwSwapBuffers(window);
 //         glfwPollEvents();
 //     }
 // 
-//     // �ͷ���Դ
+//     // ??????
 //     glDeleteVertexArrays(1, &cubeVAO);
 //     glDeleteVertexArrays(1, &lightCubeVAO);
 //     glDeleteBuffers(1, &VBO);
 // 
-//     // ��ֹ���ڳ���������Դ
+//     // ?????????????????
 //     glfwTerminate();
 //     return 0;
 // }
 // 
-// // ������������
+// // ????????????
 // void processInput(GLFWwindow* window)
 // {
 //     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
@@ -318,7 +318,7 @@
 //         camera.ProcessKeyboard(kRight, deltaTime);
 // }
 // 
-// // �ص����������ڴ�С�仯
+// // ??????????????С?仯
 // void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 // {
 //     // make sure the viewport matches the new window dimensions; note that width and 
@@ -327,7 +327,7 @@
 // }
 // 
 // 
-// // �ص�����������ƶ�
+// // ???????????????
 // void mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
 // {
 //     float xpos = static_cast<float>(xposIn);
@@ -349,13 +349,13 @@
 //     camera.ProcessMouseMovement(xoffset, yoffset);
 // }
 // 
-// // �ص����������ֹ���
+// // ????????????????
 // void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 // {
 //     camera.ProcessMouseScroll(static_cast<float>(yoffset));
 // }
 // 
-// // ������ͼ
+// // ???????
 // unsigned int loadTexture(char const* path)
 // {
 //     unsigned int textureID;
