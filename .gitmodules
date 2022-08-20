@@ -14,3 +14,6 @@
 [submodule "lib/glm"]
 	path = lib/glm
 	url = https://github.com/thezzw/glm.git
+[submodule "lib/imgui"]
+	path = lib/imgui
+	url = https://github.com/ocornut/imgui.git
