@@ -62,6 +62,7 @@ int main()
     stbi_set_flip_vertically_on_load(false);
 
     glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
 
     Shader ourShader("../assets/shader/model.vert", "../assets/shader/model.frag");
     Shader lightShader("../assets/shader/model_s.vert", "../assets/shader/model_s.frag");

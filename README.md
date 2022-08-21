@@ -35,8 +35,10 @@ cmake ..
     ![](assets/readme/model_load.png)
     3. [Add animated light effect.](assets/readme/animation_light.mp4)
     ![](assets/readme/animation_light.png)
-    4. [Simple Imgui.]()
+    4. [Imgui backends.]()
     ![](assets/readme/imgui_demo.png)
+    5. [Linear depth image.]()
+    ![](assets/readme/linear_depth.png)
 
 ## __Useful Link__
 * [__OpenGL/VRML Materials__](http://devernay.free.fr/cours/opengl/materials.html)

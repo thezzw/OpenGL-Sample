@@ -48,6 +48,7 @@ void main()
         result += CalcPointLight(pointLights[i], diffuse, specular, normal, FragPos, viewDir); 
     
 	FragColor = vec4(result, 1.0);
+    // FragColor = vec4(vec3(0.20f / (100.1f - (gl_FragCoord.z * 2.0 - 1.0) * (99.9f))), 1.0f);
 }
 
 vec3 CalcDirLight(DirLight light, vec4 diffuse, vec4 specular, vec4 normal, vec3 viewDir)

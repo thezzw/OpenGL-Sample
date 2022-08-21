@@ -17,4 +17,5 @@ void main()
     
 	// FragColor = diffuse + specular;
 	FragColor = vec4(color, 1.0);
+	// FragColor = vec4(vec3(0.20f / (100.1f - (gl_FragCoord.z * 2.0 - 1.0) * (99.9f))), 1.0f);
 }
