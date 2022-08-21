@@ -11,6 +11,7 @@
 * __GLM__
 * __STB_IMAGE__
 * __ASSIMP__ Open Asset Import Library
+* __DEAR_IMGUI__
 > All third party libraries are added as __git submodule__ into this project.
 
 ## __Installation Instructions__
@@ -32,9 +33,10 @@ cmake ..
     ![](assets/readme/boxes_with_lights.png)
     2. [Load a model from .obj.](assets/readme/model_load.mp4)
     ![](assets/readme/model_load.png)
-    3. [Add animated light effect](assets/readme/animation_light.mp4)
+    3. [Add animated light effect.](assets/readme/animation_light.mp4)
     ![](assets/readme/animation_light.png)
-    * __Tips__: This project is using _Visual Studio 2022_ default charset _GB2312_, so if you open it with other IDE you may see some unreadable code. Just change your charset to _GB2312_ and you'll see those chinese annotations.
+    4. [Simple Imgui.]()
+    ![](assets/readme/imgui_demo.png)
 
 ## __Useful Link__
 * [__OpenGL/VRML Materials__](http://devernay.free.fr/cours/opengl/materials.html)

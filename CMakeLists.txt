@@ -36,12 +36,17 @@ include_directories(
     lib/glfw/include/
     lib/glm/
     lib/stb/
+    lib/imgui/
+    lib/imgui/backends/
 )
 
 # 收集项目文件
 file(
     GLOB VENDORS_SOURCES 
     lib/glad/src/glad.c
+    lib/imgui/backends/imgui_impl_glfw.cpp
+    lib/imgui/backends/imgui_impl_opengl3.cpp
+    lib/imgui/imgui*.cpp
 )
 file(
     GLOB PROJECT_HEADERS
