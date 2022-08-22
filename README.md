@@ -1,4 +1,4 @@
-# __OpenGL-Demo__
+# __OpenGL-Sample__
 ## __Description__
 * This is a repository for OpenGL demo projects I had done.
 
@@ -35,7 +35,7 @@ cmake ..
     ![](assets/readme/model_load.png)
     3. [Add animated light effect.](assets/readme/animation_light.mp4)
     ![](assets/readme/animation_light.png)
-    4. [Imgui backends.]()
+    4. [Add imgui backends.]()
     ![](assets/readme/imgui_demo.png)
     5. [Linear depth image.]()
     ![](assets/readme/linear_depth.png)
