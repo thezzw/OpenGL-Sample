@@ -12,6 +12,12 @@ class Shader
 public:
     unsigned int ID;
 
+    /**
+     * @brief 构造一个新的Shader对象
+     * 
+     * @param vertexPath 顶点渲染器glsl文件路径
+     * @param fragmentPath 片段渲染器glsl文件路径
+     */
     Shader(const char* vertexPath, const char* fragmentPath)
     {
         std::string vertexCode;
@@ -68,7 +74,10 @@ public:
     {
         glDeleteProgram(ID);
     }
-
+    /**
+     * @brief 激活当前渲染器
+     * 
+     */
     void use()
     {
         glUseProgram(ID);

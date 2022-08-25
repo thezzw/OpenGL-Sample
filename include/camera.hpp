@@ -6,6 +6,7 @@
 #include<gtc/matrix_transform.hpp>
 #include<gtc/type_ptr.hpp>
 
+// 枚举相机可以移动的方向
 enum Directions
 {
 	kForward,
@@ -19,15 +20,37 @@ enum Directions
 class Camera
 {
 public:
+	/**
+	 * @brief 构造一个新的Camera对象
+	 * 
+	 * @param init_pos 初始化相机的位置
+	 */
 	Camera(glm::vec3 init_pos)
 	{
 		position_ = init_pos;
 	}
 	~Camera(){}
 
+	/**
+	 * @brief 获取缩放比
+	 * 
+	 * @return float 缩放比
+	 */
 	float zoom(){ return zoom_; }
+
+	/**
+	 * @brief 获取相机位置
+	 * 
+	 * @return glm::vec3 相机位置
+	 */
 	glm::vec3 position() { return position_; }
 
+	/**
+	 * @brief 处理键盘输入
+	 * 
+	 * @param direction 移动方向
+	 * @param dlt_time 间隔
+	 */
 	void ProcessKeyboard(Directions direction, float dlt_time)
 	{
 		float dlt_dis = dlt_time * velocity_;
@@ -55,6 +78,13 @@ public:
 			break;
 		}
 	}
+
+	/**
+	 * @brief 处理鼠标移动
+	 * 
+	 * @param x_offset x轴偏移量
+	 * @param y_offset y轴偏移量
+	 */
 	void ProcessMouseMovement(float x_offset, float y_offset)
 	{
 		x_offset *= sensitivity_;
@@ -74,6 +104,12 @@ public:
 		front.z = sin(glm::radians(yaw_)) * cos(glm::radians(pitch_));
 		front_ = glm::normalize(front);
 	}
+
+	/**
+	 * @brief 处理鼠标滚轮
+	 * 
+	 * @param y_offset y轴偏移量
+	 */
 	void ProcessMouseScroll(float y_offset)
 	{
 		if (zoom_ >= 1.0f && zoom_ <= 45.0f)
@@ -83,6 +119,12 @@ public:
 		if (zoom_ >= 45.0f)
 			zoom_ = 45.0f;
 	}
+	
+	/**
+	 * @brief 获取观察矩阵
+	 * 
+	 * @return glm::mat4 观察矩阵
+	 */
 	glm::mat4 GetViewMatrix()
 	{
 		return glm::lookAt(position_, position_ + front_, up_);

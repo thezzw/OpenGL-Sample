@@ -54,7 +54,7 @@ file(
 )
 file(
     GLOB PROJECT_SOURCES
-    src/*.cpp
+    src/load_model.cpp
 )
 file(
     GLOB PROJECT_SHADERS

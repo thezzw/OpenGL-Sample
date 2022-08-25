@@ -31,11 +31,22 @@ public:
     string directory;
     bool gammaCorrection;
 
+    /**
+     * @brief 构造一个新的Model对象
+     * 
+     * @param path 模型路径
+     * @param gamma 
+     */
     Model(string const& path, bool gamma = false) : gammaCorrection(gamma)
     {
         loadModel(path);
     }
 
+    /**
+     * @brief 绘制模型
+     * 
+     * @param shader 渲染器
+     */
     void Draw(Shader& shader)
     {
         for (unsigned int i = 0; i < meshes.size(); i++)
