@@ -50,8 +50,7 @@ int main()
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
     glfwSetCursorPosCallback(window, mouse_callback);
     glfwSetScrollCallback(window, scroll_callback);
-
-    // glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
@@ -79,7 +78,6 @@ int main()
     ImGui_ImplGlfw_InitForOpenGL(window, true);
     ImGui_ImplOpenGL3_Init(glsl_version);
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
-    bool has_light = true;
 
     while (!glfwWindowShouldClose(window))
     {
@@ -98,27 +96,24 @@ int main()
         glm::vec3 light_pos_ops = glm::vec3(-7.0f * cos(time), 10.0f, -7.0f * sin(time));
 
         ourShader.setVec3("viewPos", camera.position());
-        if (has_light)
-        {
-            ourShader.setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
-            ourShader.setVec3("dirLight.ambient", 0.05f, 0.05f, 0.05f);
-            ourShader.setVec3("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
-            ourShader.setVec3("dirLight.specular", 0.5f, 0.5f, 0.5f);
-            ourShader.setVec3("pointLights[0].position", light_pos);
-            ourShader.setVec3("pointLights[0].ambient", 0.05f, 0.05f, 0.05f);
-            ourShader.setVec3("pointLights[0].diffuse", 0.8f, 0.8f, 0.8f);
-            ourShader.setVec3("pointLights[0].specular", 1.0f, 1.0f, 1.0f);
-            ourShader.setFloat("pointLights[0].constant", 1.0f);
-            ourShader.setFloat("pointLights[0].linear", 0.007f);
-            ourShader.setFloat("pointLights[0].quadratic", 0.0002f);
-            ourShader.setVec3("pointLights[1].position", light_pos_ops);
-            ourShader.setVec3("pointLights[1].ambient", 0.05f, 0.05f, 0.05f);
-            ourShader.setVec3("pointLights[1].diffuse", 0.8f, 0.8f, 0.8f);
-            ourShader.setVec3("pointLights[1].specular", 1.0f, 1.0f, 1.0f);
-            ourShader.setFloat("pointLights[1].constant", 1.0f);
-            ourShader.setFloat("pointLights[1].linear", 0.007f);
-            ourShader.setFloat("pointLights[1].quadratic", 0.0002f);
-        }
+        ourShader.setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
+        ourShader.setVec3("dirLight.ambient", 0.05f, 0.05f, 0.05f);
+        ourShader.setVec3("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
+        ourShader.setVec3("dirLight.specular", 0.5f, 0.5f, 0.5f);
+        ourShader.setVec3("pointLights[0].position", light_pos);
+        ourShader.setVec3("pointLights[0].ambient", 0.05f, 0.05f, 0.05f);
+        ourShader.setVec3("pointLights[0].diffuse", 0.8f, 0.8f, 0.8f);
+        ourShader.setVec3("pointLights[0].specular", 1.0f, 1.0f, 1.0f);
+        ourShader.setFloat("pointLights[0].constant", 1.0f);
+        ourShader.setFloat("pointLights[0].linear", 0.007f);
+        ourShader.setFloat("pointLights[0].quadratic", 0.0002f);
+        ourShader.setVec3("pointLights[1].position", light_pos_ops);
+        ourShader.setVec3("pointLights[1].ambient", 0.05f, 0.05f, 0.05f);
+        ourShader.setVec3("pointLights[1].diffuse", 0.8f, 0.8f, 0.8f);
+        ourShader.setVec3("pointLights[1].specular", 1.0f, 1.0f, 1.0f);
+        ourShader.setFloat("pointLights[1].constant", 1.0f);
+        ourShader.setFloat("pointLights[1].linear", 0.007f);
+        ourShader.setFloat("pointLights[1].quadratic", 0.0002f);
 
         glm::mat4 projection = glm::perspective(glm::radians(camera.zoom()), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
         glm::mat4 view = camera.GetViewMatrix();
@@ -132,13 +127,9 @@ int main()
         
         ourModel.Draw(ourShader);
 
-        if (has_light)
-        {
-            lightShader.use();
-            light.drawCube(lightShader, light_pos, glm::vec3(1.0f, 1.0f, 1.0f), projection, view, model);
-            light.drawCube(lightShader, light_pos_ops, glm::vec3(1.0f, 1.0f, 1.0f), projection, view, model);
-        }
-        
+        lightShader.use();
+        light.drawCube(lightShader, light_pos, glm::vec3(1.0f, 1.0f, 1.0f), projection, view, model);
+        light.drawCube(lightShader, light_pos_ops, glm::vec3(1.0f, 1.0f, 1.0f), projection, view, model);     
 
         // Dear ImGui
         ImGui_ImplOpenGL3_NewFrame();
@@ -148,8 +139,6 @@ int main()
             // bool show_demo_window = true;
             // ImGui::ShowDemoWindow(&show_demo_window);
             ImGui::Begin("Hello world!");
-            if (ImGui::Button("change_light"))
-                has_light = !has_light;
             ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
             ImGui::End();
         }

@@ -54,7 +54,7 @@ file(
 )
 file(
     GLOB PROJECT_SOURCES
-    src/load_model.cpp
+    src/*.cpp
 )
 file(
     GLOB PROJECT_SHADERS
@@ -68,13 +68,21 @@ source_group("shaders" FILES ${PROJECT_SHADERS})
 source_group("sources" FILES ${PROJECT_SOURCES})
 source_group("vendors" FILES ${VENDORS_SOURCES})
 
+#可执行文件一-----------------------------------------------------------------------------------
+set(EXE_1_NAME exe_load_model)
+file(
+    GLOB EXE_1_SOURCES
+    src/load_model.cpp
+)
+
 # 链接可执行文件
-add_executable(${PROJECT_NAME} ${PROJECT_SOURCES} ${PROJECT_HEADERS}
-                               ${PROJECT_SHADERS} ${VENDORS_SOURCES})
+add_executable(${EXE_1_NAME} ${EXE_1_SOURCES} ${PROJECT_HEADERS}
+                             ${PROJECT_SHADERS} ${VENDORS_SOURCES})
 
 # 链接库
-target_link_libraries(${PROJECT_NAME} assimp glfw ${GLAD_LIBRARIES})
+target_link_libraries(${EXE_1_NAME} assimp glfw ${GLAD_LIBRARIES})
 
 # 设置运行时项目输出目录位置
-set_target_properties(${PROJECT_NAME} PROPERTIES
-                      RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${PROJECT_NAME})
+set_target_properties(${EXE_1_NAME} PROPERTIES
+                      RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${EXE_1_NAME})
+#----------------------------------------------------------------------------------------------

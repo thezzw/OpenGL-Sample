@@ -10,13 +10,13 @@
 * __GLFW__
 * __GLM__
 * __STB_IMAGE__
-* __ASSIMP__ Open Asset Import Library
+* __ASSIMP__
 * __DEAR_IMGUI__
 > All third party libraries are added as __git submodule__ into this project.
 
 ## __Installation Instructions__
 ```
-git clone https://github.com/thezzw/OpenGL-Demo.git
+git clone https://github.com/thezzw/OpenGL-Demo.git --recursive
 mkdir build
 cd build
 cmake ..
