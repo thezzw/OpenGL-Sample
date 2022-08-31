@@ -65,6 +65,9 @@ int main()
     glEnable(GL_STENCIL_TEST);
     glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
 
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
     Shader shader("../assets/shader/simple.vert", "../assets/shader/simple.frag");
     Shader shaderSingleColor("../assets/shader/model_s.vert", "../assets/shader/model_s.frag");
 
@@ -140,6 +143,7 @@ int main()
         glm::vec3(-0.3f, 0.0f, -2.3f),
         glm::vec3(0.5f, 0.0f, -0.6f)
     };
+    std::map<float, glm::vec3> sorted;
 
     // cube VAO
     unsigned int cubeVAO, cubeVBO;
@@ -180,7 +184,7 @@ int main()
 
     unsigned int cubeTexture = loadTexture("../assets/img/horse.png");
     unsigned int floorTexture = loadTexture("../assets/img/container2.png");
-    unsigned int transparentTexture = loadTexture("../assets/img/grass.png");
+    unsigned int transparentTexture = loadTexture("../assets/img/blending_transparent_window.png");
 
     shader.use();
     shader.setInt("texture1", 0);
@@ -232,10 +236,14 @@ int main()
         // vegetation
         glBindVertexArray(transparentVAO);
         glBindTexture(GL_TEXTURE_2D, transparentTexture);
-        for (unsigned int i = 0; i < vegetation.size(); i++)
+        for (unsigned int i = 0; i < vegetation.size(); i++) {
+            float distance = glm::length(camera.position() - vegetation[i]);
+            sorted[distance] = vegetation[i];
+        }
+        for (std::map<float, glm::vec3>::reverse_iterator it = sorted.rbegin(); it != sorted.rend(); ++it)
         {
             model = glm::mat4(1.0f);
-            model = glm::translate(model, vegetation[i]);
+            model = glm::translate(model, it->second);
             shader.setMat4("model", model);
             glDrawArrays(GL_TRIANGLES, 0, 6);
         }

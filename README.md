@@ -43,6 +43,8 @@ cmake ..
     ![](assets/readme/two_boxes.png)
     6. [Grass with alphs pass.]()
     ![](assets/readme/grass.png)
+    6. [Glasses.]()
+    ![](assets/readme/glass.png)
 
 ## __Useful Link__
 * [__OpenGL/VRML Materials__](http://devernay.free.fr/cours/opengl/materials.html)
