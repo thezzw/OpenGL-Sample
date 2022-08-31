@@ -3,7 +3,7 @@
 * This is a repository for OpenGL demo projects I had done.
 
 ## __Contents__
-* __OpenGLDemo__ A cmake project for learning opengl.
+* __OpenGLSample__ A cmake project for learning opengl.
 
 ## __Third Party Libraries__
 * __GLAD__
@@ -21,10 +21,10 @@ mkdir build
 cd build
 cmake ..
 ```
-* __OpenGLDemo__
+* __OpenGLSample__
 
-    1. Open `build/OpenGLDemo.sln` with _Visual Studio_.
-    2. Right click OpenGLDemo and select as start project.
+    1. Open `build/OpenGLSample.sln` with _Visual Studio_.
+    2. Right click one project with **exe_** as the frefix  and select it as start project.
     ![](assets/readme/vs_config_0.png)
     3. Click run button.
     ![](assets/readme/vs_effect_material.gif)
@@ -39,6 +39,10 @@ cmake ..
     ![](assets/readme/imgui_demo.png)
     5. [Linear depth image.]()
     ![](assets/readme/linear_depth.png)
+    6. [Stencil test.]()
+    ![](assets/readme/two_boxes.png)
+    6. [Grass with alphs pass.]()
+    ![](assets/readme/grass.png)
 
 ## __Useful Link__
 * [__OpenGL/VRML Materials__](http://devernay.free.fr/cours/opengl/materials.html)
