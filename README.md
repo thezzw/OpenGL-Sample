@@ -45,6 +45,9 @@ cmake ..
     ![](assets/readme/grass.png)
     6. [Glasses.]()
     ![](assets/readme/glass.png)
+    7. [Test kernel functions.]()
+    ![](assets/readme/kernel_sharpen.png)
+    ![](assets/readme/kernel_blur.png)
 
 ## __Useful Link__
 * [__OpenGL/VRML Materials__](http://devernay.free.fr/cours/opengl/materials.html)

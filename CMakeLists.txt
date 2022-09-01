@@ -86,7 +86,7 @@ target_link_libraries(${EXE_1_NAME} assimp glfw ${GLAD_LIBRARIES})
 set_target_properties(${EXE_1_NAME} PROPERTIES
                       RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${EXE_1_NAME})
 #----------------------------------------------------------------------------------------------
-#可执行文件一-----------------------------------------------------------------------------------
+#可执行文件二-----------------------------------------------------------------------------------
 set(EXE_2_NAME exe_two_boxes)
 file(
     GLOB EXE_2_SOURCES
@@ -103,4 +103,22 @@ target_link_libraries(${EXE_2_NAME} assimp glfw ${GLAD_LIBRARIES})
 # 设置运行时项目输出目录位置
 set_target_properties(${EXE_2_NAME} PROPERTIES
                       RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${EXE_2_NAME})
+#----------------------------------------------------------------------------------------------
+#可执行文件三-----------------------------------------------------------------------------------
+set(EXE_3_NAME exe_frame_buffer)
+file(
+    GLOB EXE_3_SOURCES
+    src/frame_buffer.cpp
+)
+
+# 链接可执行文件
+add_executable(${EXE_3_NAME} ${EXE_3_SOURCES} ${PROJECT_HEADERS}
+                             ${PROJECT_SHADERS} ${VENDORS_SOURCES})
+
+# 链接库
+target_link_libraries(${EXE_3_NAME} assimp glfw ${GLAD_LIBRARIES})
+
+# 设置运行时项目输出目录位置
+set_target_properties(${EXE_3_NAME} PROPERTIES
+                      RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${EXE_3_NAME})
 #----------------------------------------------------------------------------------------------
