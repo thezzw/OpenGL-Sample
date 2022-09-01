@@ -49,6 +49,8 @@ cmake ..
     ![](assets/readme/kernel_sharpen.png)
     ![](assets/readme/kernel_blur.png)
     ![](assets/readme/kernel_edge_detection.png)
+    8. [Add skybox.]()
+    ![](assets/readme/skybox.png)
 
 ## __Useful Link__
 * [__OpenGL/VRML Materials__](http://devernay.free.fr/cours/opengl/materials.html)
