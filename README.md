@@ -51,6 +51,8 @@ cmake ..
     ![](assets/readme/kernel_edge_detection.png)
     8. [Add skybox.]()
     ![](assets/readme/skybox.png)
+    9. [Add mirror and glass.]()
+    ![](assets/readme/mirror_glass.png)
 
 ## __Useful Link__
 * [__OpenGL/VRML Materials__](http://devernay.free.fr/cours/opengl/materials.html)

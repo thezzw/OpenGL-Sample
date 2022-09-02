@@ -80,6 +80,8 @@ int main()
     Shader shader("../assets/shader/simple.vert", "../assets/shader/simple.frag");
     Shader screenShader("../assets/shader/quad.vert", "../assets/shader/quad.frag");
     Shader skyboxShader("../assets/shader/skybox.vert", "../assets/shader/skybox.frag");
+    Shader mirrorShader("../assets/shader/reflex.vert", "../assets/shader/reflex.frag");
+    Shader refractionShader("../assets/shader/refraction.vert", "../assets/shader/refraction.frag");
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
@@ -126,6 +128,50 @@ int main()
          0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
         -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
         -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+    };
+    float cubeVerticesNor[] = {
+        // positions          // normals
+        -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+         0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+         0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+         0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+        -0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+
+        -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+         0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+         0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+         0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+        -0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+        -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+
+        -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+        -0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+        -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+        -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+        -0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+        -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+
+         0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+         0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+         0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+         0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+         0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+         0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+
+        -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+         0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+         0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+         0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+        -0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+
+        -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+         0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+         0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+         0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+        -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+        -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
     };
     float planeVertices[] = {
         // positions          // texture Coords 
@@ -202,6 +248,17 @@ int main()
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(1);
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+    // mirror cube VAO
+    unsigned int ncubeVAO, ncubeVBO;
+    glGenVertexArrays(1, &ncubeVAO);
+    glGenBuffers(1, &ncubeVBO);
+    glBindVertexArray(ncubeVAO);
+    glBindBuffer(GL_ARRAY_BUFFER, ncubeVBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(cubeVerticesNor), &cubeVerticesNor, GL_STATIC_DRAW);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
     // plane VAO
     unsigned int planeVAO, planeVBO;
     glGenVertexArrays(1, &planeVAO);
@@ -260,6 +317,9 @@ int main()
     skyboxShader.use();
     skyboxShader.setInt("skybox", 0);
 
+    mirrorShader.use();
+    mirrorShader.setInt("skybox", 0);
+
     // framebuffer configuration
     // -------------------------
     unsigned int framebuffer;
@@ -301,7 +361,6 @@ int main()
         // -----
         processInput(window);
 
-
         // render
         // ------
         // bind to framebuffer and draw scene as we normally would to color texture 
@@ -334,6 +393,32 @@ int main()
         glBindTexture(GL_TEXTURE_2D, floorTexture);
         shader.setMat4("model", glm::mat4(1.0f));
         glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+
+        // mirror cube
+        mirrorShader.use();
+        mirrorShader.setMat4("view", view);
+        mirrorShader.setMat4("projection", projection);
+        model = glm::translate(model, glm::vec3(0.0f, 5.0f, 0.0f));
+        mirrorShader.setMat4("model", model);
+        mirrorShader.setVec3("cameraPos", camera.position());
+        glBindVertexArray(ncubeVAO);
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+        glBindVertexArray(0);
+
+        // refraction cube
+        refractionShader.use();
+        refractionShader.setMat4("view", view);
+        refractionShader.setMat4("projection", projection);
+        model = glm::translate(model, glm::vec3(0.0f, 0.0f, 2.0f));
+        refractionShader.setMat4("model", model);
+        refractionShader.setVec3("cameraPos", camera.position());
+        glBindVertexArray(ncubeVAO);
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
         glBindVertexArray(0);
 
         // draw skybox as last
