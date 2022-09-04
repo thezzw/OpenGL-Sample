@@ -53,6 +53,8 @@ cmake ..
     ![](assets/readme/skybox.png)
     9. [Add mirror and glass.]()
     ![](assets/readme/mirror_glass.png)
+    10. [Test geometry shader.]()
+    ![](assets/readme/geometry_shader_point_house.png)
 
 ## __Useful Link__
 * [__OpenGL/VRML Materials__](http://devernay.free.fr/cours/opengl/materials.html)
