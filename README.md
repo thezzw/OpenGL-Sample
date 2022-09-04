@@ -24,7 +24,7 @@ cmake ..
 * __OpenGLSample__
 
     1. Open `build/OpenGLSample.sln` with _Visual Studio_.
-    2. Right click one project with **exe_** as the frefix  and select it as start project.
+    2. Right click one project with **exe_** as the prefix  and select it as start project.
     ![](assets/readme/vs_config_0.png)
     3. Click run button.
     ![](assets/readme/vs_effect_material.gif)
@@ -41,7 +41,7 @@ cmake ..
     ![](assets/readme/linear_depth.png)
     6. [Stencil test.]()
     ![](assets/readme/two_boxes.png)
-    6. [Grass with alphs pass.]()
+    6. [Grass with alpha pass.]()
     ![](assets/readme/grass.png)
     6. [Glasses.]()
     ![](assets/readme/glass.png)
