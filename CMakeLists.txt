@@ -141,3 +141,21 @@ target_link_libraries(${EXE_4_NAME} assimp glfw ${GLAD_LIBRARIES})
 set_target_properties(${EXE_4_NAME} PROPERTIES
                       RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${EXE_4_NAME})
 #----------------------------------------------------------------------------------------------
+#可执行文件五-----------------------------------------------------------------------------------
+set(EXE_5_NAME exe_instanced)
+file(
+    GLOB EXE_5_SOURCES
+    src/instanced.cpp
+)
+
+# 链接可执行文件
+add_executable(${EXE_5_NAME} ${EXE_5_SOURCES} ${PROJECT_HEADERS}
+                             ${PROJECT_SHADERS} ${VENDORS_SOURCES})
+
+# 链接库
+target_link_libraries(${EXE_5_NAME} assimp glfw ${GLAD_LIBRARIES})
+
+# 设置运行时项目输出目录位置
+set_target_properties(${EXE_5_NAME} PROPERTIES
+                      RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${EXE_5_NAME})
+#----------------------------------------------------------------------------------------------
