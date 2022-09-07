@@ -159,3 +159,21 @@ target_link_libraries(${EXE_5_NAME} assimp glfw ${GLAD_LIBRARIES})
 set_target_properties(${EXE_5_NAME} PROPERTIES
                       RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${EXE_5_NAME})
 #----------------------------------------------------------------------------------------------
+#可执行文件六-----------------------------------------------------------------------------------
+set(EXE_6_NAME exe_instanced_asteroid_belt)
+file(
+    GLOB EXE_6_SOURCES
+    src/instanced_asteroid_belt.cpp
+)
+
+# 链接可执行文件
+add_executable(${EXE_6_NAME} ${EXE_6_SOURCES} ${PROJECT_HEADERS}
+                             ${PROJECT_SHADERS} ${VENDORS_SOURCES})
+
+# 链接库
+target_link_libraries(${EXE_6_NAME} assimp glfw ${GLAD_LIBRARIES})
+
+# 设置运行时项目输出目录位置
+set_target_properties(${EXE_6_NAME} PROPERTIES
+                      RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${EXE_6_NAME})
+#----------------------------------------------------------------------------------------------

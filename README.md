@@ -55,6 +55,10 @@ cmake ..
     ![](assets/readme/mirror_glass.png)
     10. [Test geometry shader.]()
     ![](assets/readme/geometry_shader_point_house.png)
+    11. [Draw asteroids normally.]()
+    ![](assets/readme/normal_belt.png)
+    12. [Draw 100000 asteroids with instancing.]()
+    ![](assets/readme/instance_100000_belt.png)
 
 ## __Useful Link__
 * [__OpenGL/VRML Materials__](http://devernay.free.fr/cours/opengl/materials.html)
