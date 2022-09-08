@@ -195,3 +195,21 @@ target_link_libraries(${EXE_7_NAME} assimp glfw ${GLAD_LIBRARIES})
 set_target_properties(${EXE_7_NAME} PROPERTIES
                       RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${EXE_7_NAME})
 #----------------------------------------------------------------------------------------------
+#可执行文件八-----------------------------------------------------------------------------------
+set(EXE_8_NAME exe_shadow_mapping)
+file(
+    GLOB EXE_8_SOURCES
+    src/shadow_mapping.cpp
+)
+
+# 链接可执行文件
+add_executable(${EXE_8_NAME} ${EXE_8_SOURCES} ${PROJECT_HEADERS}
+                             ${PROJECT_SHADERS} ${VENDORS_SOURCES})
+
+# 链接库
+target_link_libraries(${EXE_8_NAME} assimp glfw ${GLAD_LIBRARIES})
+
+# 设置运行时项目输出目录位置
+set_target_properties(${EXE_8_NAME} PROPERTIES
+                      RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${EXE_8_NAME})
+#----------------------------------------------------------------------------------------------
