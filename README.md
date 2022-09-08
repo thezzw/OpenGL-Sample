@@ -59,6 +59,8 @@ cmake ..
     ![](assets/readme/normal_belt.png)
     12. [Draw 100000 asteroids with instancing.]()
     ![](assets/readme/instance_100000_belt.png)
+    13. [Test Blinn-Phong shader model.]()
+    ![](assets/readme/blinn_phong.png)
 
 ## __Useful Link__
 * [__OpenGL/VRML Materials__](http://devernay.free.fr/cours/opengl/materials.html)

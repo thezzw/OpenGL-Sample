@@ -177,3 +177,21 @@ target_link_libraries(${EXE_6_NAME} assimp glfw ${GLAD_LIBRARIES})
 set_target_properties(${EXE_6_NAME} PROPERTIES
                       RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${EXE_6_NAME})
 #----------------------------------------------------------------------------------------------
+#可执行文件七-----------------------------------------------------------------------------------
+set(EXE_7_NAME exe_blinn_phong)
+file(
+    GLOB EXE_7_SOURCES
+    src/blinn_phong.cpp
+)
+
+# 链接可执行文件
+add_executable(${EXE_7_NAME} ${EXE_7_SOURCES} ${PROJECT_HEADERS}
+                             ${PROJECT_SHADERS} ${VENDORS_SOURCES})
+
+# 链接库
+target_link_libraries(${EXE_7_NAME} assimp glfw ${GLAD_LIBRARIES})
+
+# 设置运行时项目输出目录位置
+set_target_properties(${EXE_7_NAME} PROPERTIES
+                      RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${EXE_7_NAME})
+#----------------------------------------------------------------------------------------------
