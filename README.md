@@ -61,10 +61,14 @@ cmake ..
     ![](assets/readme/instance_100000_belt.png)
     13. [Test Blinn-Phong shader model.]()
     ![](assets/readme/blinn_phong.png)
-    14. [Shadows.]
+    14. [Shadows.]()
     ![acne](assets/readme/shadow_acne.png)
     ![bias](assets/readme/shadow_bias.png)
     ![pcf](assets/readme/shadow_pcf.png)
+    15. [HDR.]()
+    ![](assets/readme/ldr.png)
+    ![](assets/readme/hdr_reinhard.png)
+    ![](assets/readme/hdr_exposure_0.1.png)
 
 ## __Useful Link__
 * [__OpenGL/VRML Materials__](http://devernay.free.fr/cours/opengl/materials.html)
