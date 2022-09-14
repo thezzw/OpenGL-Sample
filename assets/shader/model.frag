@@ -1,5 +1,5 @@
 #version 330 core
-#define NR_POINT_LIGHTS 2
+#define NR_POINT_LIGHTS 8
 struct DirLight 
 {
     vec3 direction;

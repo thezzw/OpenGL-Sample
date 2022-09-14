@@ -231,3 +231,21 @@ target_link_libraries(${EXE_9_NAME} assimp glfw ${GLAD_LIBRARIES})
 set_target_properties(${EXE_9_NAME} PROPERTIES
                       RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${EXE_9_NAME})
 #----------------------------------------------------------------------------------------------
+#可执行文件十-----------------------------------------------------------------------------------
+set(EXE_10_NAME exe_deferred)
+file(
+    GLOB EXE_10_SOURCES
+    src/deferred.cpp
+)
+
+# 链接可执行文件
+add_executable(${EXE_10_NAME} ${EXE_10_SOURCES} ${PROJECT_HEADERS}
+                             ${PROJECT_SHADERS} ${VENDORS_SOURCES})
+
+# 链接库
+target_link_libraries(${EXE_10_NAME} assimp glfw ${GLAD_LIBRARIES})
+
+# 设置运行时项目输出目录位置
+set_target_properties(${EXE_10_NAME} PROPERTIES
+                      RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${EXE_10_NAME})
+#----------------------------------------------------------------------------------------------

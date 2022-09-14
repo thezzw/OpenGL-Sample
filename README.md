@@ -67,8 +67,17 @@ cmake ..
     ![pcf](assets/readme/shadow_pcf.png)
     15. [HDR.]()
     ![](assets/readme/ldr.png)
+    Reinhard Tone Mapping.
     ![](assets/readme/hdr_reinhard.png)
+    Exposure.
     ![](assets/readme/hdr_exposure_0.1.png)
+    16. [Deferred shading.]()
+    A RBA16F 2D texture for position vector.
+    ![](assets/readme/gbuffer_pos.png)
+    A RBA16F 2D texture for normal vector.
+    ![](assets/readme/gbuffer_normal.png)
+    A RGBA 2D texture for diffuse color and specular color.
+    ![](assets/readme/gbuffer_32lights.png)
 
 ## __Useful Link__
 * [__OpenGL/VRML Materials__](http://devernay.free.fr/cours/opengl/materials.html)
