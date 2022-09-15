@@ -78,7 +78,7 @@ cmake ..
     ![](assets/readme/gbuffer_normal.png)
     A RGBA 2D texture for diffuse color and specular color.
     ![](assets/readme/gbuffer_32lights.png)
-    17. Naked PBR.
+    1. Simple PBR.
     ![](assets/readme/pbr_simple.png)
 
 ## __Useful Link__
