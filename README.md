@@ -78,6 +78,8 @@ cmake ..
     ![](assets/readme/gbuffer_normal.png)
     A RGBA 2D texture for diffuse color and specular color.
     ![](assets/readme/gbuffer_32lights.png)
+    17. Naked PBR.
+    ![](assets/readme/pbr_simple.png)
 
 ## __Useful Link__
 * [__OpenGL/VRML Materials__](http://devernay.free.fr/cours/opengl/materials.html)
@@ -85,3 +87,4 @@ cmake ..
 * [__Wavefront .obj file__](http://en.wikipedia.org/wiki/Wavefront_.obj_file)
 * [__COLLADA__](http://en.wikipedia.org/wiki/COLLADA) Based on xml.
 * [__Assimp Doc__](http://assimp.sourceforge.net/lib_html/postprocess_8h.html)
+* [__Free PBR__](https://freepbr.com/)

@@ -249,3 +249,21 @@ target_link_libraries(${EXE_10_NAME} assimp glfw ${GLAD_LIBRARIES})
 set_target_properties(${EXE_10_NAME} PROPERTIES
                       RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${EXE_10_NAME})
 #----------------------------------------------------------------------------------------------
+#可执行文件十一-----------------------------------------------------------------------------------
+set(EXE_11_NAME exe_pbr)
+file(
+    GLOB EXE_11_SOURCES
+    src/pbr.cpp
+)
+
+# 链接可执行文件
+add_executable(${EXE_11_NAME} ${EXE_11_SOURCES} ${PROJECT_HEADERS}
+                             ${PROJECT_SHADERS} ${VENDORS_SOURCES})
+
+# 链接库
+target_link_libraries(${EXE_11_NAME} assimp glfw ${GLAD_LIBRARIES})
+
+# 设置运行时项目输出目录位置
+set_target_properties(${EXE_11_NAME} PROPERTIES
+                      RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${EXE_11_NAME})
+#----------------------------------------------------------------------------------------------
